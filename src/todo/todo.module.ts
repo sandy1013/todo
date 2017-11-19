@@ -7,6 +7,8 @@ import { TodoMainRouter } from './todo.main.router';
 import { AuthModule } from './AuthModule/toto.auth.module';
 import { TodoListModule } from './TodoListModule/todo.list.module';
 
+import { UtilsService } from './Shared/Services/todo.utils.service';
+
 @NgModule({
     declarations: [
         TodoMainComponent
@@ -17,7 +19,7 @@ import { TodoListModule } from './TodoListModule/todo.list.module';
         TodoListModule,
         TodoMainRouter
       ],
-      providers: [],
+      providers: [UtilsService],
       bootstrap: [TodoMainComponent]
 })
 export class TodoModule {

@@ -1,3 +1,23 @@
 input.ng-touched.ng-invalid {
     border: 1px solid #900000;
 }
+
+.inline-input-error {
+    margin-top: 5px;
+    color: rgb(179, 0, 0);
+}
+
+.pass-strong {
+    border: 1px solid #51c142 !important;
+    box-shadow: inset 0 0px 35px rgba(83, 193, 66, 0.5) !important;
+}
+
+.pass-weak {
+    border: 1px solid #398efd !important;
+    box-shadow: inset 0 0px 35px rgba(57, 145, 253, 0.5) !important;
+}
+
+.pass-very-weak {
+    border: 1px solid #e8cf2c !important;
+    box-shadow: inset 0 0px 35px rgba(232, 207, 44, 0.5) !important;
+}
