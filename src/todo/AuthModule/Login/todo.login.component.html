@@ -1,16 +1,18 @@
-<form class="container">
-    <fieldset>
-        <legend>Login</legend>
-        <div class="form-group">
-            <label for="email" class="form-label">Email:</label>
-            <input id="email" type="email" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="password" class="form-label">password:</label>
-            <input id="password" type="password" class="form-control" />
-        </div>
-        <button class="btn btn-success" type="submit">Log In</button>  
-        <a class="btn btn-link" routerLink="/landing/register">Sign Up?</a>
-        <a class="btn btn-link" routerLink="/home/editor">forgot password?</a>
-    </fieldset>
-</form>
+<section class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+        <fieldset>
+            <legend>Login</legend>
+            <div class="form-group">
+                <label for="email" class="form-label">Email:</label>
+                <input id="email" type="email" class="form-control" formControlName="email"/>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">password:</label>
+                <input id="password" type="password" class="form-control" formControlName="password"/>
+            </div>
+            <button class="btn btn-success" type="submit">Log In</button>  
+            <a class="btn btn-link" routerLink="/landing/register">Sign Up?</a>
+            <a class="btn btn-link" routerLink="/home/editor">forgot password?</a>
+        </fieldset>
+    </form>
+</section>

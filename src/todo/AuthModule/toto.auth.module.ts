@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRouterModule } from './todo.auth.router';
 
@@ -8,7 +9,7 @@ import { TodoAuthHomeComponent } from './todo.auth.home.component';
 
 @NgModule({
     declarations: [TodoAuthHomeComponent, LoginComponent, RegisterComponent],
-    imports: [AuthRouterModule],
+    imports: [ReactiveFormsModule, AuthRouterModule],
     exports: [AuthRouterModule]
 })
 export class AuthModule {
