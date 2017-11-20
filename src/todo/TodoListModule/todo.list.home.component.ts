@@ -1,6 +1,8 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { TodoHomeService } from './Services/todo.home.service';
+
 @Component({
     selector: 'todo-list-home',
     templateUrl: 'todo.list.home.component.html',
@@ -9,10 +11,17 @@ import { Router } from '@angular/router';
 export class TodoListHomeComponent {
     menuState: boolean;
 
-    constructor(private renderer: Renderer2, private router: Router) {}
+    constructor(private renderer: Renderer2, private router: Router, private homeService: TodoHomeService) {}
 
     onLogout() {
-        this.router.navigate(['landing/login']);
+        this.homeService.LogoutUser().subscribe((response) => {
+            if (response.success) {
+                this.router.navigate(['landing/login']);
+            }
+        }, (error) => {
+            console.log(error);
+        });
+        
     }
 
     onMenu(menu: ElementRef) {

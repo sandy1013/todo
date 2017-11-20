@@ -12,6 +12,8 @@ import { UtilsService } from './Shared/Services/todo.utils.service';
 
 import { AuthReducers } from './AuthModule/Store/todo.auth.reducers';
 
+import { RequestInterceptor } from './Shared/Interceptors/todo.request.interseptor';
+
 @NgModule({
     declarations: [
         TodoMainComponent
