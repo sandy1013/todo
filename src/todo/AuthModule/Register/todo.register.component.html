@@ -2,7 +2,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onRegister()" novalidate>
         <fieldset>
             <legend>Register</legend>
-            <p class="inline-input-error" *ngIf="!errors.valid && errors.message">{{errors.message}}</p>
+            <p class="inline-input-error" *ngIf="!errors.valid && errors.message != null">{{errors.message}}</p>
             <div class="form-group">
                 <label for="username" class="form-label">User Name:</label>
                 <input id="username" class="form-control" type="text" formControlName="username"/>

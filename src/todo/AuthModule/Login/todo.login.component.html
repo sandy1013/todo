@@ -2,7 +2,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
         <fieldset>
             <legend>Login</legend>
-            <p class="alert alert-danger" *ngIf="!errors.valid && errors.message">{{errors.message}}</p>
+            <p class="alert alert-danger" *ngIf="!errors.valid && errors.message != null">{{errors.message}}</p>
             <div class="form-group">
                 <label for="email" class="form-label">Email:</label>
                 <input id="email" type="email" class="form-control" formControlName="email"/>
