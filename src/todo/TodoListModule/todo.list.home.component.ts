@@ -1,5 +1,9 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import * as fromTodoListActions from './Store/todo.list.actions';
+import * as fromAuthAuctions from '../AuthModule/Store/todo.auth.actions';
 
 import { TodoHomeService } from './Services/todo.home.service';
 
@@ -11,17 +15,18 @@ import { TodoHomeService } from './Services/todo.home.service';
 export class TodoListHomeComponent {
     menuState: boolean;
 
-    constructor(private renderer: Renderer2, private router: Router, private homeService: TodoHomeService) {}
+    constructor(private renderer: Renderer2, private router: Router, private homeService: TodoHomeService, private store: Store<any>) {}
 
     onLogout() {
         this.homeService.LogoutUser().subscribe((response) => {
             if (response.success) {
+                this.store.dispatch(new fromTodoListActions.ClearTodoStore());
+                this.store.dispatch(new fromAuthAuctions.ClearAuthStore());
                 this.router.navigate(['landing/login']);
             }
         }, (error) => {
             console.log(error);
         });
-        
     }
 
     onMenu(menu: ElementRef) {

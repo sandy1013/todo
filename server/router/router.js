@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const UserClass = require('../business/UserClass');
+const TodoClass = require('../business/TodoClass');
 
 const router = express.Router();
 
@@ -46,6 +47,26 @@ router.get('/logout', authenticate, (req, res) => {
         res.status(200).send({'success': true});
     }, (error) => {
         res.status(200).send({'success': false});
+    });
+});
+
+router.put('/todo/add', authenticate, (req, res) => {
+    TodoClass.AddTodo(req.user, req.body).then((todo_docs) => {
+        TodoClass.FetchTodos(req.user).then((todo_docs) => {
+            res.status(200).send({success: true, todos: todo_docs}); 
+        }, (error) => {
+            res.status(403).send(error); 
+        });
+    }, (error) => {
+        res.status(403).send(error); 
+    });
+});
+
+router.get('/todo/fetch', authenticate, (req, res) => {
+    TodoClass.FetchTodos(req.user).then((todo_docs) => {
+        res.status(200).send({success: true, todos: todo_docs}); 
+    }, (error) => {
+        res.status(403).send(error); 
     });
 });
 

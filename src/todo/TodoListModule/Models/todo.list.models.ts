@@ -1,22 +1,22 @@
 export interface TodoModel {
     title: string;
-    description: string,
-    createdAt: Date,
-    _id: number
+    description: string;
+    createdAt: string;
+    _id: string;
 }
 
 export interface TodoSaveModel {
     title: string;
     description: string;
-    createdAt: Date;
+    createdAt: string;
 }
 
 export class Todo implements TodoModel {
-    public createdAt: Date;
-    public _id: number;
+    public createdAt: string;
+    public _id: string;
 
     constructor(public title: string, public description: string) {
-        this.createdAt = new Date();
-        this._id = (new Date).valueOf();
+        this.createdAt = (new Date).toString();
+        this._id = (new Date).valueOf().toString();
     }
 }

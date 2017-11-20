@@ -2,23 +2,21 @@
     <form (ngSubmit)="onCreateTodo(f)" novalidate #f="ngForm">
         <div class="form-group">
             <label for="title" class="form-label">Title:</label>
-            <input type="text" class="form-control" id="title" name="title" type="text" ngModel required>
+            <input type="text" class="form-control" id="title" name="title" type="text" ngModel required autocomplete="off">
         </div>
         <p class="inline-input-error" *ngIf="f.controls.title && f.controls.title.touched && f.controls.title.errors && f.controls.title.errors.required">*Title is required.</p>
         <div class="form-group">
             <label for="description" class="form-label">Description:</label>
-            <textarea class="form-control" rows="5" id="description" name="description" ngModel required></textarea>
+            <textarea class="form-control" rows="5" id="description" name="description" ngModel required autocomplete="off"></textarea>
         </div>
         <p class="inline-input-error" *ngIf="f.controls.description && f.controls.description.touched && f.controls.description.errors && f.controls.description.errors.required">*Description is required.</p>
         <button type="submit" class="btn btn-primary" [disabled]="!f.touched || !f.valid">Create Todo</button>
     </form>
     <hr/>
 
-    <!-- <article>
+    <article>
         <ul>
-            <li>
-                Test
-            </li>
+            <todo-list-item *ngFor="let todo of (todoState | async).todos" [todo]="todo"></todo-list-item>
         </ul>
-    </article> -->
+    </article>
 </section>

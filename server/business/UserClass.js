@@ -35,7 +35,7 @@ class UserClass {
                         db.then((reg_user) => {
                             if (reg_user) {
                                 resolve({
-                                    data: _.merge(_.pick(reg_user, ['username', 'email']), {"success": true}),
+                                    data: _.merge(_.pick(reg_user, ['username', 'email', 'cloudsync']), {"success": true}),
                                     token: token
                                 });
                             } else {

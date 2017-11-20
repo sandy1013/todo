@@ -8,16 +8,8 @@ const router: Routes = [
     { path: '', component: TodoListHomeComponent, children: [
         { path: '', component: TodoEditorComponent },
         { path: 'editor', component: TodoEditorComponent }
-    ]},
-    
+    ]}
 ];
-
-// const router: Routes = [
-//     {path: 'home', component: TodoListHomeComponent, children: [
-//         { path: '', component: TodoEditorComponent },
-//         { path: 'editor', component: TodoEditorComponent }
-//     ]}
-// ];
 
 @NgModule({
     imports: [RouterModule.forChild(router)],

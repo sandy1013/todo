@@ -14,6 +14,8 @@ import { AuthReducers } from './AuthModule/Store/todo.auth.reducers';
 
 import { RequestInterceptor } from './Shared/Interceptors/todo.request.interseptor';
 
+import { AuthGaurd } from './Shared/Gaurds/todo.auth.gaurd';
+
 @NgModule({
     declarations: [
         TodoMainComponent
@@ -24,7 +26,7 @@ import { RequestInterceptor } from './Shared/Interceptors/todo.request.intersept
         TodoMainRouter,
         StoreModule.forRoot({auth: AuthReducers})
       ],
-      providers: [UtilsService],
+      providers: [UtilsService, AuthGaurd],
       bootstrap: [TodoMainComponent]
 })
 export class TodoModule {

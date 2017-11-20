@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     errors: FormErrors;
 
+    // tslint:disable-next-line:max-line-length
     constructor(private fb: FormBuilder, private utilService: UtilsService, private loginService: LoginService, private router: Router, private store: Store<any>) {}
 
     ngOnInit() {
@@ -49,12 +50,15 @@ export class LoginComponent implements OnInit {
         if (this.utilService.validate(this.errors, this.loginForm)) {
             const user = new UserLogin(this.loginForm.value.email, this.loginForm.value.password);
             this.loginService.LoginUser(user)
-            //.map(response => response.json())
+            // .map(response => response.json())
             .subscribe((response) => {
                 const payload = response.json();
                 const headers = response.headers;
                 if (payload.success) {
-                    this.store.dispatch(new fromAuthActions.SetupToken(headers.get('x-auth')));
+                    this.store.dispatch(new fromAuthActions.SetupToken({
+                        token: headers.get('x-auth'),
+                        sync: payload.cloudsync
+                    }));
 
                     this.router.navigate(['home']);
                 }
