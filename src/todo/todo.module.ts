@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 
 import { TodoMainComponent } from './todo.main.component';
 
@@ -9,6 +10,8 @@ import { TodoListModule } from './TodoListModule/todo.list.module';
 
 import { UtilsService } from './Shared/Services/todo.utils.service';
 
+import { AuthReducers } from './AuthModule/Store/todo.auth.reducers';
+
 @NgModule({
     declarations: [
         TodoMainComponent
@@ -16,7 +19,8 @@ import { UtilsService } from './Shared/Services/todo.utils.service';
       imports: [
         BrowserModule,
         AuthModule,
-        TodoMainRouter
+        TodoMainRouter,
+        StoreModule.forRoot({auth: AuthReducers})
       ],
       providers: [UtilsService],
       bootstrap: [TodoMainComponent]
