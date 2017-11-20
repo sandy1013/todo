@@ -5,11 +5,19 @@ import { TodoListHomeComponent } from './todo.list.home.component';
 import { TodoEditorComponent } from './TodoEditor/todo.editor.component';
 
 const router: Routes = [
-    {path: 'home', component: TodoListHomeComponent, children: [
+    { path: '', component: TodoListHomeComponent, children: [
         { path: '', component: TodoEditorComponent },
         { path: 'editor', component: TodoEditorComponent }
-    ]}
+    ]},
+    
 ];
+
+// const router: Routes = [
+//     {path: 'home', component: TodoListHomeComponent, children: [
+//         { path: '', component: TodoEditorComponent },
+//         { path: 'editor', component: TodoEditorComponent }
+//     ]}
+// ];
 
 @NgModule({
     imports: [RouterModule.forChild(router)],

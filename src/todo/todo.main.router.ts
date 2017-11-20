@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const router: Routes = [
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
+    {path: 'home', loadChildren: './TodoListModule/todo.list.module#TodoListModule'},
     { path: '**', redirectTo: '/landing'}
 ];
 

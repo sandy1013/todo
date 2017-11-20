@@ -16,7 +16,6 @@ import { UtilsService } from './Shared/Services/todo.utils.service';
       imports: [
         BrowserModule,
         AuthModule,
-        TodoListModule,
         TodoMainRouter
       ],
       providers: [UtilsService],
